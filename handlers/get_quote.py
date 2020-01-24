@@ -5,10 +5,9 @@ def handler_get_quote(update, context):
     if str(context.args[0]).isdigit():
         chat = update.effective_chat
         quote_id = int(context.args[0])
-        if Quote.select().where((Quote.id == quote_id) | (Quote.chat_id == chat.id)).exists():
-            quote = Quote.get(
-                (Quote.id == quote_id) | (Quote.chat_id == chat.id)
-            )
+        query = Quote.select().where((Quote.id == quote_id) & (Quote.chat_id == chat.id))
+        if query.exists():
+            quote = query.get()
             chat.bot.forward_message(
                 chat_id=chat.id,
                 from_chat_id=-355145151,
