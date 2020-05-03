@@ -14,5 +14,5 @@ def handler_add_quote(update, context):
                 stored_message_id=forwarded.message_id,
             )
             update.message.reply_markdown(
-                f'Quote added! use `/get {quote.id}` to get the quote and /remove {quote.id} to remove it.'
+                f'Quote added! use `/get {quote.id}` to get the quote and `/remove {quote.id}` to remove it.'
             )
